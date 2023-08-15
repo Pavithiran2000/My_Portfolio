@@ -367,11 +367,12 @@
         <h2>Contact <span style="color: crimson;">Me</span></h2>
     </div>
     <div class="contact-form">
-        <form action="">
-            <input type="text" placeholder="Your Name">
-            <input type="email" name="" id="" placeholder="Your Email">
-            <textarea name="" id="" cols="30" rows="10" placeholder="Write Message Here..."></textarea>
-            <input type="button" value="Send" class="contact-button">
+        <form id="contactForm" name="contactForm">
+            <input type="text" placeholder="Your Name" id="nameInput">
+            <input type="email" name="email" placeholder="Your Email" id="emailInput" >                
+            <textarea name="" cols="30" rows="10" placeholder="Write Message Here..." id="messageInput"></textarea>
+            <span id="emailError" class="error-message" style="color: crimson; font-size: 15px; text-align: center;"></span>
+            <input type="button" value="Send" class="contact-button" id="sendButton">
         </form>
     </div>
 </section>
@@ -396,6 +397,8 @@
     <p>&#169; PAVI <span style="color: crimson; font-weight: 600;">Folio</span> | All Right Reserved.</p>
 </div>
 
+<!--   *** Link To Emailjs ***   -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
 <!--   *** Link To JQuery ***   -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" ></script>

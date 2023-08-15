@@ -77,21 +77,89 @@ $('.technical-container').owlCarousel({
           items:1,
           nav:false
       },
-      450:{
+      400:{
         items:2,
         nav:true
       },
-      700:{
+      702:{
           items:3,
           nav:true
       },
-      960:{
+      1050:{
           items:4,
           nav:true
       },
-      1400:{
+      1340:{
         items:5,
+        nav:true
+    },
+      1600:{
+        items:6,
         nav:true
     }
   }
-})
+});
+
+  // sending email with validation
+
+    emailjs.init("QJV_vAGN9GdHf1Bm2");
+
+    document.addEventListener("DOMContentLoaded", function() {
+            var emailInput = document.getElementById("emailInput");
+            var emailError = document.getElementById("emailError");
+            var sendButton = document.getElementById("sendButton");
+            var nameInput = document.getElementById("nameInput");
+            var messageInput = document.getElementById("messageInput");
+            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+
+        sendButton.addEventListener("click", function() {
+            const name = nameInput.value;
+            const email = emailInput.value;
+            const message = messageInput.value;
+            if(nameInput.value.trim() !== "" && messageInput.value.trim() !== "" && emailInput.value.match(mailformat))
+              { 
+                // Remove invalid class from the button
+                sendButton.classList.remove("invalid");
+                // Sending the email
+                emailjs.send("service_6l5nc8k","template_qpw6f5e", {
+                      to_email: "skspavithiran@gmail.com", //  my desired email address
+                      to_name: "PAVITHIRAN",
+                      from_name: name,
+                      message: message,
+                      reply_to: email
+                  }).then(function(response) {
+                      console.log("Email sent successfully:", response);
+                      alert("Email sent successfully!");
+                  }, function(error) {
+                      console.error("Email could not be sent:", error);
+                      alert("Email could not be sent.");
+                  });
+
+                // Clear input fields after successful submission
+                  nameInput.value = "";
+                  emailInput.value = "";
+                  messageInput.value = "";
+                  emailError.textContent = "";
+              }
+            else
+            {
+              var err1 = "";
+              var err2 = "";
+              if (nameInput.value.trim() === "") {
+                  err1 = "Name is empty";
+              }
+              if (messageInput.value.trim() === "") {
+                  err1 += (err1 ? ", " : "") + "Message is empty";
+              }
+              if (!emailInput.value.match(mailformat)) {
+                  err2 = "Invalid email address";
+              }
+              emailError.textContent = err1 + (err1 && err2 ? " and " : "") + err2;
+              sendButton.classList.add("invalid");
+              emailInput.focus();
+            }
+        });
+  });
+
+        

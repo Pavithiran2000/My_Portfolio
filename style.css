@@ -35,7 +35,7 @@ section {
 body.active {
   --text-color: #fff;
   --text-color2: #eeeeee;
-  --bg-color: #191919;
+  --bg-color: #1c1c1c;
   --bg-color2:#111111;
   --hover: #5c5c5c;
   --hover_text: #4b8fe8;
@@ -132,6 +132,7 @@ right: 25px;
   right: 10px;
   bottom: 10px;
   padding: 20px;
+  z-index: 10;
 }
 .whatsapp-btn-container .what_btn{
   font-size: 50px;
@@ -305,15 +306,11 @@ right: 25px;
 
 
 /* skills section */
-
-.box-container {
-  display: flex;
-  flex-wrap: wrap;
-  padding-top: 20px;
-  gap: 2rem;
+.owl-carousel{
+  z-index: 1;
 }
-.box {
-  flex: 1 1 3rem;
+.item .box {
+  flex: 1 1 2rem;
   box-shadow: 0 0rem 0.3rem var(--text-color);
   border-radius: 0.5rem;
   border: 0.1rem solid rgba(0, 0, 0, 0.1);
@@ -355,12 +352,15 @@ right: 25px;
 	position: relative;
 }
 .technical-container .technical-skils{
-	padding: 20px;
+	padding-top: 30px;
 }
 
 .technical-skils .skill-body{
-	background-color: var(--primary-light-clr);
+  max-width: 200px;
+  min-width: 200px;
 	padding: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .technical .owl-nav{
 	position: absolute;
@@ -408,17 +408,8 @@ right: 25px;
   cursor: pointer;
 	background-color: var(--bg-color);
   margin-top: 25px;
+}
 
-}
-.resume-contents .box::after{
-	content: '';
-	position: absolute;
-	border-width: 7px;
-	border-style: solid;
-	border-color: transparent transparent transparent var(--main-color);
-	top: 25px;
-	left: -18px;
-}
 .resume-contents .box h4{
 	position: relative;
 	color: crimson;
@@ -538,6 +529,7 @@ textarea {
 form input::placeholder,
 textarea::placeholder {
   color: var(--text-color);
+  opacity: 40%;
 }
 
 form textarea {
@@ -546,6 +538,7 @@ form textarea {
 }
 
 .contact-button {
+  margin-top: 10px;
   width: 160px;
   cursor: pointer;
   background: var(--main-color);
@@ -554,6 +547,10 @@ form textarea {
   justify-content: center;
   letter-spacing: 1px;
   margin-left: 35%;
+}
+.contact-button.invalid {
+  background-color: crimson;
+  cursor: not-allowed;
 }
 
 .contact-button:hover {
@@ -632,8 +629,47 @@ form textarea {
     --medium-font: 1.4rem;
   }
 }
-
-@media (max-width: 916px) {
+@media (max-width: 703px) {
+.technical-skils .skill-body{
+  margin-left: 30px;
+}
+}
+@media (max-width: 590px) {
+  .technical-skils .skill-body{
+    margin-left: 20px;
+  }
+  }
+@media (max-width: 530px) {
+    .technical-skils .skill-body{
+      margin-left: 10px;
+    }
+}
+@media (max-width: 470px) {
+      .technical-skils .skill-body{
+        margin-left: 0px;
+      }
+}
+@media (max-width: 400px) {
+  .technical-skils .skill-body{
+    margin-left: 80px;
+  }
+}
+@media (max-width: 360px) {
+  .technical-skils .skill-body{
+    margin-left: 60px;
+  }
+}
+@media (max-width: 320px) {
+  .technical-skils .skill-body{
+    margin-left: 40px;
+  }
+}
+@media (max-width: 295px) {
+  .technical-skils .skill-body{
+    margin-left: 29px;
+  }
+}
+@media (max-width: 925px) {
   :root {
     --big-font: 2.4rem;
     --medium-font: 1.2rem;
@@ -689,15 +725,16 @@ form textarea {
   }
 
   .home-text {
-    grid-column: 1/3;
-    padding-left: 1.4rem;
+    grid-column: 2/3;
+    padding-left: 1rem;
   }
   .home-text p{
-    width: 70%;
+    width: 85%;
   }
 
   .home-img {
     order: initial;
+    padding-top: 20px;
   }
 
   .about-container {
@@ -723,7 +760,7 @@ form textarea {
   }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 400px) {
   :root {
     --big-font: 1.7rem;
     --medium-font: 1.1rem;
@@ -745,7 +782,10 @@ form textarea {
   .home-text span {
     font-size: 1rem;
   }
-
+  .home-text {
+    grid-column: 1/3;
+    padding-left: 1rem;
+  }
   .home-text h2 {
     font-size: 0.9rem;
     font-weight: 500;
@@ -759,7 +799,7 @@ form textarea {
   }
 
   .contact-form form {
-    width: 150px;
+    width: 180px;
   }
 
   .contact-button {
